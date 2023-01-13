@@ -1,2 +1,4 @@
 # Project-Statistika-Nonparametrik
-1.
+Pada project mata kuliah Statistika Nonparametrik ini kami melakukan survey terhadap lima belas responden dari kalangan mahasiswa/i Teknologi Sains Data angkatan 2021 Universitas Airlangga, Surabaya. Pengumpulan data dilakukan dengan cara memberikan tiga gelas kopi berbeda varian kepada lima belas responden serta tidak dijelaskan nama dari varian kopi untuk mendapatkan hasil yang objektif. Kemudian, responden diminta untuk mengisikan kuesioner yang memuat pertanyaan dalam Google Form yang telah disediakan. Varian kopi merek Caffino yang digunakan pada penelitian ini yakni Classic, Hazelnut, dan Mocca.
+
+Jenis data yang kami gunakan dalam penelitian ini adalah jenis data kualitatif berskala ordinal. Dalam penelitian ini data kualitatif skala ordinal ditunjukkan dengan adanya urutan pada tiap tingkatan variabel  yang diteliti yakni kemanisan, kepahitan, aroma, dan rating keseluruhan. 
