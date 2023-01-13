@@ -1,0 +1,569 @@
+---
+title: "LAMPIRAN"
+output: pdf_document
+---
+
+# Import Dataset
+
+```{r}
+kemanisan = read.csv("Tingkat_Kemanisan.csv")
+kepahitan = read.csv("Tingkat_Kepahitan.csv")
+aroma = read.csv("Tingkat_Aroma.csv")
+rating = read.csv("Rating_Keseluruhan.csv")
+```
+
+# Deleting Identifier from Dataset
+
+```{r message=FALSE, warning=FALSE}
+kemanisan = kemanisan[,-1]
+kepahitan = kepahitan[,-1]
+aroma = aroma[,-1]
+rating = rating[,-1]
+
+attach(kemanisan)
+attach(kepahitan)
+attach(aroma)
+attach(rating)
+```
+
+# 1. Statistika Deskriptif
+
+### Data Penelitian *Tingkat Kemanisan*
+
+```{r message=FALSE, warning=FALSE}
+library(pastecs)
+stat.desc(kemanisan)
+```
+
+### Data Penelitian *Tingkat Kepahitan*
+
+```{r message=FALSE, warning=FALSE}
+library(pastecs)
+stat.desc(kepahitan)
+```
+
+### Data Penelitian *Tingkat Aroma*
+
+```{r message=FALSE, warning=FALSE}
+library(pastecs)
+stat.desc(aroma)
+```
+
+### Data Penelitian *Rating Keseluruhan*
+
+```{r message=FALSE, warning=FALSE}
+library(pastecs)
+stat.desc(rating)
+```
+
+# 2. Uji Kerandoman - Runs Test
+
+```{r message=FALSE, warning=FALSE}
+library(DescTools)
+# Tingkat Kemanisan
+RunsTest(Tingkat_Kemanisan_K1)
+RunsTest(Tingkat_Kemanisan_K2)
+RunsTest(Tingkat_Kemanisan_K3)
+```
+
+-   Seluruh P-Value \> alfa(0,05) maka Gagal Tolak H0, sehingga data Tingkat Kemanisan telah diambil secara random atau acak.
+
+```{r message=FALSE, warning=FALSE}
+library(DescTools)
+# Tingkat Kepahitan
+RunsTest(Tingkat_Kepahitan_K1)
+RunsTest(Tingkat_Kepahitan_K2)
+RunsTest(Tingkat_Kepahitan_K3)
+```
+
+-   Seluruh P-Value \> alfa(0,05 )maka Gagal Tolak H0, sehingga data Tingkat Kepahitan telah diambil secara random atau acak.
+
+```{r message=FALSE, warning=FALSE}
+library(DescTools)
+# Tingkat Aroma
+RunsTest(Tingkat_Aroma_K1)
+RunsTest(Tingkat_Aroma_K2)
+RunsTest(Tingkat_Aroma_K3)
+```
+
+-   Seluruh P-Value \> alfa(0,05) maka Gagal Tolak H0, sehingga data Tingkat Aroma telah diambil secara random atau acak.
+
+```{r message=FALSE, warning=FALSE}
+library(DescTools)
+# Rating Keseluruhan
+RunsTest(Rating_Keseluruhan_K1)
+RunsTest(Rating_Keseluruhan_K2)
+RunsTest(Rating_Keseluruhan_K3)
+```
+
+-   Seluruh P-Value \> alfa(0,05) maka Gagal Tolak H0, sehingga data Rating Keseluruhan telah diambil secara random atau acak.
+
+# 3. Uji Asosiatif
+
+## 3.1. Korelasi Ranking Spearman
+
+### 1. Data Penelitian Variabel *Tingkat Kemanisan*
+
+```{r}
+# Korelasi Tingkat Kemanisan Kopi 1 dan 2
+result = cor.test(Tingkat_Kemanisan_K1,Tingkat_Kemanisan_K2, method = "spearman"
+                  ,exact = F)
+# Menampilkan hasil Korelasi Rank Spearman
+result
+```
+
+-   Karena p-value(0.4681) lebih besar dari alpha(0,05) maka Gagal Tolak H0, sehingga Tingkat Kemanisan kopi 1 dan kopi 2 saling independen.
+
+```{r}
+# Korelasi Tingkat Kemanisan Kopi 1 dan 3
+result = cor.test(Tingkat_Kemanisan_K1,Tingkat_Kemanisan_K3, method = "spearman"
+                  ,exact = F)
+# Menampilkan hasil Korelasi Rank Spearman
+result
+```
+
+-   Karena p-value(0.4024) lebih besar dari alpha(0,05) maka Gagal Tolak H0, sehingga Tingkat Kemanisan kopi 1 dan kopi 3 saling independen.
+
+```{r}
+# Korelasi Tingkat Kemanisan Kopi 2 dan 3
+result = cor.test(Tingkat_Kemanisan_K2,Tingkat_Kemanisan_K3, method = "spearman"
+                  ,exact = F)
+# Menampilkan hasil Korelasi Rank Spearman
+result
+```
+
+-   Karena p-value(0.2016) lebih besar dari alpha(0,05) maka Gagal Tolak H0, sehingga Tingkat Kemanisan kopi 2 dan kopi 3 saling independen.
+
+#### Kesimpulan
+
+-   Karena ketiga Uji Asosiatif menunjukkan Gagal Tolak H0, maka variabel Tingkat Kemanisan saling independen berdasarkan Korelasi Ranking Spearman.
+
+### 2. Data Penelitian Variabel *Tingkat Kepahitan*
+
+```{r}
+# Korelasi Tingkat Kepahitan Kopi 1 dan 2
+result = cor.test(Tingkat_Kepahitan_K1,Tingkat_Kepahitan_K2, method = "spearman"
+                  ,exact = F)
+# Menampilkan hasil Korelasi Rank Spearman
+result
+```
+
+-   Karena p-value(0.103) lebih besar dari alpha(0,05) maka Gagal Tolak H0, sehingga Tingkat Kepahitan kopi 1 dan kopi 2 saling independen.
+
+```{r}
+# Korelasi Tingkat Kepahitan Kopi 1 dan 3
+result = cor.test(Tingkat_Kepahitan_K1,Tingkat_Kepahitan_K3, method = "spearman"
+                  ,exact = F)
+# Menampilkan hasil Korelasi Rank Spearman
+result
+```
+
+-   Karena p-value(0.1627) lebih besar dari alpha(0,05) maka Gagal Tolak H0, sehingga Tingkat Kepahitan kopi 1 dan kopi 3 saling independen.
+
+```{r}
+# Korelasi Tingkat Kepahitan Kopi 2 dan 3
+result = cor.test(Tingkat_Kepahitan_K2,Tingkat_Kepahitan_K3, method = "spearman"
+                  ,exact = F)
+# Menampilkan hasil Korelasi Rank Spearman
+result
+```
+
+-   Karena p-value(0.07577) lebih besar dari alpha(0,05) maka Gagal Tolak H0, sehingga Tingkat Kepahitan kopi 2 dan kopi 3 saling independen.
+
+#### Kesimpulan
+
+-   Karena ketiga Uji Asosiatif menunjukkan Gagal Tolak H0, maka variabel Tingkat Kemanisan saling independen berdasarkan Korelasi Ranking Spearman.
+
+### 3. Data Penelitian Variabel *Tingkat Aroma*
+
+```{r}
+# Korelasi Tingkat Aroma Kopi 1 dan 2
+result = cor.test(Tingkat_Aroma_K1,Tingkat_Aroma_K2, method = "spearman"
+                  ,exact = F)
+# Menampilkan hasil Korelasi Rank Spearman
+result
+```
+
+-   Karena p-value(0.4436) lebih besar dari alpha(0,05) maka Gagal Tolak H0, sehingga Tingkat Aroma kopi 1 dan kopi 2 saling independen.
+
+```{r}
+# Korelasi Tingkat Kepahitan Kopi 1 dan 3
+result = cor.test(Tingkat_Aroma_K1,Tingkat_Aroma_K3, method = "spearman"
+                  ,exact = F)
+# Menampilkan hasil Korelasi Rank Spearman
+result
+```
+
+-   Karena p-value(0.2995) lebih besar dari alpha(0,05) maka Gagal Tolak H0, sehingga Tingkat Aroma kopi 1 dan kopi 3 saling independen.
+
+```{r}
+# Korelasi Tingkat Aroma Kopi 2 dan 3
+result = cor.test(Tingkat_Aroma_K2,Tingkat_Aroma_K3, method = "spearman"
+                  ,exact = F)
+# Menampilkan hasil Korelasi Rank Spearman
+result
+
+```
+
+-   Karena p-value(0.07116) lebih besar dari alpha(0,05) maka Gagal Tolak H0, sehingga Tingkat Aroma kopi 2 dan kopi 3 saling independen.
+
+#### Kesimpulan
+
+-   Karena ketiga Uji Asosiatif menunjukkan Gagal Tolak H0, maka variabel Tingkat Aroma saling independen berdasarkan Korelasi Ranking Spearman.
+
+### 4. Data Penelitian Variabel *Rating Keseluruhan*
+
+```{r}
+# Korelasi Rating Keseluruhan  Kopi 1 dan 2
+result = cor.test(Rating_Keseluruhan_K1, Rating_Keseluruhan_K2, method = "spearman"
+                  ,exact = F)
+# Menampilkan hasil Korelasi Rank Spearman
+result
+
+```
+
+-   Karena p-value(0.1688) lebih besar dari alpha(0,05) maka Gagal Tolak H0, sehingga Rating Keseluruhan kopi 1 dan kopi 2 saling independen.
+
+```{r}
+# Korelasi Rating Keseluruhan  Kopi 1 dan 3
+result = cor.test(Rating_Keseluruhan_K1,Rating_Keseluruhan_K3, method = "spearman"
+                  ,exact = F)
+# Menampilkan hasil Korelasi Rank Spearman
+result
+
+```
+
+-   Karena p-value(0.1982) lebih besar dari alpha(0,05) maka Gagal Tolak H0, sehingga Rating Keseluruhan kopi 1 dan kopi 3 saling independen.
+
+```{r}
+# Korelasi Rating Keseluruhan  Kopi 2 dan 3
+result = cor.test(Rating_Keseluruhan_K2,Rating_Keseluruhan_K3, method = "spearman"
+                  ,exact = F)
+# Menampilkan hasil Korelasi Rank Spearman
+result
+```
+
+-   Karena p-value(0.0001256) lebih kecil dari alpha(0,05) maka Tolak H0, sehingga Rating Keseluruhan kopi 2 dan kopi 3 dependen.
+
+#### Kesimpulan
+
+-   Karena salah satu Uji Asosiatif menunjukkan Tolak H0, maka variabel Rating Keseluruhan dependen berdasarkan Korelasi Ranking Spearman.
+
+## Kesimpulan Korelasi Ranking Spearman
+
+1.  Data Tingkat Kemanisan saling Independen sehingga dapat dilakukan Uji Hipotesis K-Sampel Independen.
+2.  Data Tingkat Kepahitan saling Independen sehingga dapat dilakukan Uji Hipotesis K-Sampel Independen.
+3.  Data Tingkat Aroma saling Independen sehingga dapat dilakukan Uji Hipotesis K-Sampel Independen.
+4.  Data Ranking Keseluruhan Dependen sehingga dapat dilakukan Uji Hipotesis K-Sampel Dependen.
+
+## 3.2. Korelasi Tau kendall
+
+### 1. Data Penelitian Variabel *Tingkat Kemanisan*
+
+```{r warning=FALSE}
+# Korelasi Tingkat Kemanisan Kopi 1 dan Kopi 2
+result = cor.test(Tingkat_Kemanisan_K1,Tingkat_Kemanisan_K2, method = "kendall")
+  
+# Menampilkan hasil Korelasi Tau Kendall 
+result
+```
+
+-   Karena p-value(0.453) lebih besar dari alpha(0,05) maka Gagal Tolak H0, sehingga Tingkat Kemanisan kopi 1 dan kopi 2 saling independen
+
+```{r warning=FALSE}
+# Korelasi Tingkat Kemanisan Kopi 1 dan Kopi 3
+result = cor.test(Tingkat_Kemanisan_K1,Tingkat_Kemanisan_K3, method = "kendall")
+  
+# Menampilkan hasil Korelasi Tau Kendall 
+result
+```
+
+-   Karena p-value(0.389) lebih besar dari alpha(0,05) maka Gagal Tolak H0, sehingga Tingkat Kemanisan kopi 1 dan kopi 3 saling independen
+
+```{r warning=FALSE}
+# Korelasi Tingkat Kemanisan Kopi 2 dan Kopi 3
+result = cor.test(Tingkat_Kemanisan_K2,Tingkat_Kemanisan_K3, method = "kendall")
+  
+# menampilkan hasil Tau Kendall 
+result
+```
+
+-   Karena p-value(0.1833) lebih besar dari alpha(0,05) maka Gagal Tolak H0, sehingga Tingkat Kemanisan kopi 2 dan kopi 3 saling independen.
+
+#### Kesimpulan
+
+-   Karena ketiga Uji Asosiatif menunjukkan Gagal Tolak H0, maka variabel Tingkat Kemanisan saling independen berdasarkan Korelasi Tau Kendall.
+
+### 2. Data Penelitian Variabel *Tingkat Kepahitan*
+
+```{r warning=FALSE}
+# Korelasi Tingkat Kepahitan Kopi 1 dan Kopi 2
+result = cor.test(Tingkat_Kepahitan_K1,Tingkat_Kepahitan_K2, method = "kendall")
+  
+# Menampilkan hasil Korelasi Tau Kendall 
+result
+```
+
+-   Karena p-value(0.1017) lebih besar dari alpha(0,05) maka Gagal Tolak H0, sehingga Tingkat Kepahitan kopi 1 dan kopi 2 saling independen
+
+```{r warning=FALSE}
+# Korelasi Tingkat Kepahitan Kopi 1 dan Kopi 3
+result = cor.test(Tingkat_Kepahitan_K1,Tingkat_Kepahitan_K3, method = "kendall")
+  
+# Menampilkan hasil Korelasi Tau Kendall 
+result
+```
+
+-   Karena p-value(0.162) lebih besar dari alpha(0,05) maka Gagal Tolak H0, sehingga Tingkat Kepahitan kopi 1 dan kopi 3 saling independen
+
+```{r warning=FALSE}
+# Korelasi Tingkat Kepahitan Kopi 2 dan Kopi 3
+result = cor.test(Tingkat_Kepahitan_K2,Tingkat_Kepahitan_K3, method = "kendall")
+  
+# menampilkan hasil Tau Kendall 
+result
+```
+
+-   Karena p-value(0.07748) lebih besar dari alpha(0,05) maka Gagal Tolak H0, sehingga Tingkat Kepahitan kopi 2 dan kopi 3 saling independen berdasarkan Korelasi Tau Kendall.
+
+#### Kesimpulan
+
+-   Karena ketiga Uji Asosiatif menunjukkan Gagal Tolak H0, maka variabel Tingkat Kepahitan saling independen berdasarkan Korelasi Tau Kendall.
+
+### 3. Data Penelitian Variabel *Tingkat Aroma*
+
+```{r warning=FALSE}
+# Korelasi Tingkat Aroma Kopi 1 dan Kopi 2
+result = cor.test(Tingkat_Aroma_K1,Tingkat_Aroma_K2, method = "kendall")
+  
+# Menampilkan hasil Korelasi Tau Kendall 
+result
+```
+
+-   Karena p-value(0.4447) lebih besar dari alpha(0,05) maka Gagal Tolak H0, sehingga Tingkat Aroma kopi 1 dan kopi 2 saling independen
+
+```{r warning=FALSE}
+# Korelasi Tingkat Aroma Kopi 1 dan Kopi 3
+result = cor.test(Tingkat_Aroma_K1,Tingkat_Aroma_K3, method = "kendall")
+  
+# Menampilkan hasil Korelasi Tau Kendall 
+result
+```
+
+-   Karena p-value(0.3) lebih besar dari alpha(0,05) maka Gagal Tolak H0, sehingga Tingkat Aroma kopi 1 dan kopi 3 saling independen
+
+```{r warning=FALSE}
+# Korelasi Tingkat Aroma Kopi 2 dan Kopi 3
+result = cor.test(Tingkat_Aroma_K2,Tingkat_Aroma_K3, method = "kendall")
+  
+# menampilkan hasil Tau Kendall 
+result
+```
+
+-   Karena p-value(0.697) lebih besar dari alpha(0,05) maka Gagal Tolak H0, sehingga Tingkat Aroma kopi 2 dan kopi 3 saling independen.
+
+#### Kesimpulan
+
+-   Karena ketiga Uji Asosiatif menunjukkan Gagal Tolak H0, maka variabel Tingkat Aroma saling independen berdasarkan Korelasi Tau Kendall.
+
+### 4. Data Penelitian Variabel Rating Keseluruhan
+
+```{r warning=FALSE}
+# Korelasi Rating Keseluruhan Kopi 1 dan Kopi 2
+result = cor.test(Rating_Keseluruhan_K1,Rating_Keseluruhan_K2, method = "kendall")
+  
+# Menampilkan hasil Korelasi Tau Kendall 
+result
+```
+
+-   Karena p-value(0.1497) lebih besar dari alpha(0,05) maka Gagal Tolak H0, sehingga Rating Keseluruhan kopi 1 dan kopi 2 saling independen
+
+```{r warning=FALSE}
+# Korelasi Rating Keseluruhan Kopi 1 dan Kopi 3
+result = cor.test(Rating_Keseluruhan_K1,Rating_Keseluruhan_K3, method = "kendall")
+  
+# Menampilkan hasil Korelasi Tau Kendall 
+result
+```
+
+-   Karena p-value(0.1909) lebih besar dari alpha(0,05) maka Gagal Tolak H0, sehingga Rating Keseluruhan kopi 1 dan kopi 3 saling independen
+
+```{r warning=FALSE}
+# Korelasi Rating Keseluruhan Kopi 2 dan Kopi 3
+result = cor.test(Rating_Keseluruhan_K2,Rating_Keseluruhan_K3, method = "kendall")
+  
+# menampilkan hasil Tau Kendall 
+result
+```
+
+-   Karena p-value(0.001171) lebih kecil dari alpha(0,05) maka Tolak H0, sehingga Rating Keseluruhan kopi 2 dan kopi 3 dependen.
+
+#### Kesimpulan
+
+-   Karena salah satu Uji Asosiatif menunjukkan Tolak H0, maka variabel Rating Keseluruhan dependen berdasarkan Korelasi Tau Kendall.
+
+## Kesimpulan Korelasi Tau Kendall
+
+1.  Data Tingkat Kemanisan saling Independen sehingga dapat dilakukan Uji Hipotesis K-Sampel Independen.
+
+2.  Data Tingkat Kepahitan saling Independen sehingga dapat dilakukan Uji Hipotesis K-Sampel Independen.
+
+3.  Data Tingkat Aroma saling Independen sehingga dapat dilakukan Uji Hipotesis K-Sampel Independen.
+
+4.  Data Ranking Keseluruhan Dependen sehingga dapat dilakukan Uji Hipotesis K-Sampel Dependen.
+
+# Uji Hipotesis K-Sampel Independen
+
+## Import Dataset
+
+```{r message=FALSE, warning=FALSE}
+kemanisan_uji = read.csv("Tingkat_Kemanisan_Uji.csv")
+kepahitan_uji = read.csv("Tingkat_Kepahitan_Uji.csv")
+aroma_uji = read.csv("Tingkat_Aroma_Uji.csv")
+
+attach(kemanisan_uji)
+attach(kepahitan_uji)
+attach(aroma_uji)
+#attach(rating)
+```
+
+## Data Penelitian *Tingkat Kemanisan*
+
+### 1. Uji Perluasan Median
+
+```{r message=FALSE, warning=FALSE}
+library(agricolae)
+Median.test(Tingkat_Kemanisan,Varian_Kopi,alpha = 0.05)
+```
+
+-   Karena p-value(0.4065697) \> alfa(0,05) maka Gagal Tolak H0, sehingga seluruh median Tingkat Kemanisan dari tiga varian kopi sama.
+
+### 2. Uji Kruskal Wallis
+
+```{r}
+kruskal.test(Tingkat_Kemanisan~Varian_Kopi)
+```
+
+-   Karena p-value(0.03864) \< alfa(0,05) maka Tolak H0, sehingga **tidak semua** median Tingkat Kemanisan dari tiga varian kopi sama.
+
+### 3. Uji Jonckheere Terpstra
+
+```{r message=FALSE, warning=FALSE}
+library(clinfun)
+atr1 = kemanisan$Tingkat_Kemanisan_K1
+atr2 = kemanisan$Tingkat_Kemanisan_K3
+atr3 = kemanisan$Tingkat_Kemanisan_K2
+atribut = c(atr1, atr2, atr3)
+g = c(rep(1,15), rep(2,15), rep(3,15))
+jonckheere.test(atribut, g, alternative = "increasing")
+```
+
+-   Karena p-value(0.008802) \< alfa(0,05) maka Tolak H0, sehingga median Tingkat Kemanisan varian kopi Classic, Mocca, Hazelnut cenderung meningkat.
+
+## Data Penelitian *Tingkat Kepahitan*
+
+### 1. Uji Perluasan Median
+
+```{r message=FALSE, warning=FALSE}
+library(agricolae)
+Median.test(Tingkat_Kepahitan,Varian_Kopi,alpha = 0.05)
+```
+
+-   Karena p-value(0.08782295) \> alfa(0,05) maka Gagal Tolak H0, sehingga seluruh median Tingkat Kepahitan dari tiga varian kopi sama.
+
+### 2. Uji Kruskal Wallis
+
+```{r}
+kruskal.test(Tingkat_Kepahitan~Varian_Kopi)
+```
+
+-   Karena p-value(0.03864) \< alfa(0,05) maka Tolak H0, sehingga **tidak semua** median Tingkat Kepahitan dari tiga varian kopi sama.
+
+### 3. Uji Jonckheere Terpstra
+
+```{r message=FALSE, warning=FALSE}
+library(clinfun)
+atr1 = kepahitan$Tingkat_Kepahitan_K2
+atr2 = kepahitan$Tingkat_Kepahitan_K3
+atr3 = kepahitan$Tingkat_Kepahitan_K1
+atribut = c(atr1, atr2, atr3)
+g = c(rep(1,15), rep(2,15), rep(3,15))
+jonckheere.test(atribut, g, alternative = "increasing")
+```
+
+-   Karena p-value(0.0001576) \< alfa(0,05) maka Tolak H0, sehingga median Tingkat Kepahitan varian kopi Hazelnut, Mocca, Classic cenderung meningkat.
+
+## Data Penelitian *Tingkat Aroma*
+
+### 1. Uji Perluasan Median
+
+```{r message=FALSE, warning=FALSE}
+library(agricolae)
+Median.test(Tingkat_Aroma,Varian_Kopi,alpha = 0.05)
+```
+
+-   Karena p-value(0.3103669) \> alfa(0,05) maka Gagal Tolak H0, sehingga seluruh median Tingkat Aroma dari 3 varian kopi sama.
+
+### 2. Uji Kruskal Wallis
+
+```{r}
+kruskal.test(Tingkat_Aroma~Varian_Kopi)
+```
+
+-   Karena p-value(0.4217) \> alfa(0,05) maka Gagal Tolak H0, sehingga seluruh median Tingkat Aroma dari tiga varian kopi sama.
+
+### 3. Uji Jonckheere Terpstra
+
+```{r message=FALSE, warning=FALSE}
+library(clinfun)
+atr1 = aroma$Tingkat_Aroma_K3
+atr2 = aroma$Tingkat_Aroma_K1
+atr3 = aroma$Tingkat_Aroma_K2
+atribut = c(atr1, atr2, atr3)
+g = c(rep(1,15), rep(2,15), rep(3,15))
+jonckheere.test(atribut, g, alternative = "increasing")
+```
+
+-   Karena p-value(0.1136) \> alfa(0,05) maka Gagal Tolak H0, sehingga median Tingkat Aroma ketiga varian kopi sama.
+
+# Uji Hipotesis K-Sampel Dependen
+
+## Import Dataset
+
+```{r}
+rating_uji = read.csv("Rating_Keseluruhan_Uji.csv")
+attach(rating_uji)
+```
+
+## Data Penelitian *Rating Keseluruhan*
+
+### 1. Uji Friedman
+
+```{r}
+mymatrix = data.matrix(rating)
+friedman.test(mymatrix)
+```
+
+-   karena p-value(0.8318) \> alpha(0,05), maka Gagal Tolak H0, sehingga seluruh median Rating Keseluruhan dari tiga varian kopi sama.
+
+## 2. Uji Page
+
+```{r}
+library(DescTools)
+# Nilai L
+mymatrix = data.matrix(rating_uji)
+PageTest(mymatrix)
+
+# Aproksimasi Sampel Besar (N > 30):
+miu = (nrow(rating_uji)*ncol(rating_uji)*((ncol(rating_uji)+1)^2)/4)
+
+varian = (nrow(rating_uji)*(ncol(rating_uji)^3-ncol(rating_uji))^2)/
+  144/(ncol(rating_uji)-1)
+
+zhitung = (182-miu)/sqrt(varian)
+zhitung
+
+# Daerah Kritis z(0,05): 1,645
+```
+
+-   Karena p-value(0.3257) \> alfa(0,05) maka Gagal Tolak H0, sehingga populasi dalam blok yang sama identik atau Rating Keseluruhan dari tiga varian kopi sama.
